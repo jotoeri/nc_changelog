@@ -1,0 +1,22 @@
+{
+  "name": "nc_changelog",
+  "version": "0.0.1",
+  "description": "A changelog generator created for nextcloud apps on GitHub.",
+  "main": "index.js",
+  "bin": "index.js",
+  "type": "module",
+  "scripts": {
+    "generate": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nextcloud",
+    "github",
+    "changelog"
+  ],
+  "author": "Jonas Rittershofer",
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "octokit": "^2.0.7"
+  }
+}
