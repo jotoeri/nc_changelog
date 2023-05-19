@@ -3,7 +3,7 @@ Use as:
 
 CLI Options
 - `ghtoken` - Token to access github. Necessary for large number of requests.
-- `repo` - including org and repo -> e.g. `nextcloud/forms`
+- `repository` - including org and repository -> e.g. `nextcloud/forms`
 - `base` - Base-Branch, the PRs are merged to. Defaults to `main`
 - `out` - Output Filename. Defaults to `nc_changelog.md`
 - `releaseDate` - Date of the new release. Defaults to today's date.

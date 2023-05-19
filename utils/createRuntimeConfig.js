@@ -6,7 +6,7 @@ function createRuntimeConfig() {
 	runtimeConfig.ghtoken = processArgs.ghtoken ? processArgs.ghtoken : process.env.npm_config_ncc_ghtoken
 
 	// Read repository
-	runtimeConfig.repository = processArgs.repo ? processArgs.repo : process.env.npm_config_ncc_repo
+	runtimeConfig.repository = processArgs.repository ? processArgs.repository : process.env.npm_config_ncc_repository
 
 	// Read base branch
 	runtimeConfig.baseBranch = processArgs.base ? processArgs.base :
