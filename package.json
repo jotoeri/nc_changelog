@@ -17,6 +17,6 @@
   "author": "Jonas Rittershofer",
   "license": "AGPL-3.0",
   "dependencies": {
-    "octokit": "^2.0.18"
+    "octokit": "^2.0.19"
   }
 }
