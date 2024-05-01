@@ -16,4 +16,3 @@ jobs:
       - uses: fastify/github-action-merge-dependabot@v3
         with:
           target: minor
-          use-github-auto-merge: true
