@@ -1,26 +1,36 @@
+import { readFileSync } from 'fs'
+
 function createRuntimeConfig() {
 	const runtimeConfig = {}
 	const processArgs = readProcessArgs()
+	let configFile = {}
+
+	// Read config file
+	try {
+		configFile = JSON.parse(readFileSync('./config.json'))
+	} catch (err) {
+		console.info('No config file found.')
+	}
 
 	// Read github token
-	runtimeConfig.ghtoken = processArgs.ghtoken ? processArgs.ghtoken : process.env.npm_config_ncc_ghtoken
+	runtimeConfig.ghtoken = processArgs.ghtoken ? processArgs.ghtoken : configFile.ghtoken
 
 	// Read repository
-	runtimeConfig.repository = processArgs.repository ? processArgs.repository : process.env.npm_config_ncc_repository
+	runtimeConfig.repository = processArgs.repository ? processArgs.repository : configFile.repository
 
 	// Read base branch
 	runtimeConfig.baseBranch = processArgs.base ? processArgs.base :
-		(process.env.npm_config_ncc_base ? process.env.npm_config_ncc_base : 'main')
+		(configFile.base ? configFile.base : 'main')
 
 	// Read version
 	runtimeConfig.version = processArgs.version ? processArgs.version :
-		(process.env.npm_config_ncc_version ? process.env.npm_config_ncc_version : 'Unreleased')
+		(configFile.version ? configFile.version : 'Unreleased')
 
 	// Read previous version
-	runtimeConfig.previousVersion = processArgs.previousVersion ? processArgs.previousVersion : process.env.npm_config_ncc_previousVersion
+	runtimeConfig.previousVersion = processArgs.previousVersion ? processArgs.previousVersion : configFile.previousVersion
 
 	// Read release date
-	runtimeConfig.releaseDate = processArgs.releaseDate ? processArgs.releaseDate : process.env.npm_config_ncc_releaseDate
+	runtimeConfig.releaseDate = processArgs.releaseDate ? processArgs.releaseDate : configFile.releaseDate
 	if(!runtimeConfig.releaseDate) {
 		// If no date set, take current time.
 		// Using swedish format for date, but iso formatted date-string.
@@ -30,7 +40,7 @@ function createRuntimeConfig() {
 
 	// Read outFile
 	runtimeConfig.outFile = processArgs.out ? processArgs.out :
-		(process.env.npm_config_ncc_out ? process.env.npm_config_ncc_out : 'nc_changelog.md')
+		(configFile.out ? configFile.out : 'nc_changelog.md')
 
 	console.debug(runtimeConfig)
 	return runtimeConfig

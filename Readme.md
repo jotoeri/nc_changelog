@@ -10,4 +10,4 @@ CLI Options
 - `version` - Tag-Name of upcoming release.
 - `previousVersion` - Tag-Name of the previous release. Defaults to latest Github release.
 
-All these options are possible to store a default value in npm-config as `ncc_${option}`. Such they dont have to be given on each execution.
+All these options are possible to store a default value in a file named `config.json` in the repository root. Such they dont have to be given on each execution.
