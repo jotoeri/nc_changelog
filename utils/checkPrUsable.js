@@ -1,4 +1,4 @@
-import findLabel from "./findLabel.js"
+import findLabels from "./findLabels.js"
 
 /**
  * Check if a fetched PR is usable for us.
@@ -13,9 +13,8 @@ function checkPrUsable (pr, runtimeConfig, oldestDate) {
 		return false
 	}
 
-	// Remove dependencies
-	if (findLabel(pr, 'dependencies')) {
-		// console.debug('Dependencies')
+	// Remove exclude labeled PRs
+	if (findLabels(pr, runtimeConfig.excludeLabels)) {
 		return false
 	}
 
