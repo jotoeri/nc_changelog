@@ -9,6 +9,8 @@ import writeOut from './utils/writeOut.js'
 
 const runtimeConfig = createRuntimeConfig()
 
+if (!runtimeConfig.repository) throw 'No repository given! Aborting.'
+
 octoInit(runtimeConfig.ghtoken)
 
 if (!runtimeConfig.previousVersion) {

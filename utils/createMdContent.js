@@ -1,5 +1,5 @@
 import filterRemainder from "./filterRemainder.js"
-import findLabel from "./findLabel.js"
+import findLabels from "./findLabels.js"
 
 /**
  * Function to create the Markdown Content out of the given PRs
@@ -19,7 +19,7 @@ const createMdContent = function (runtimeConfig, pulls) {
 	content += `\n[Full Changelog](https://github.com/${runtimeConfig.repository}/compare/${runtimeConfig.previousVersion}...${runtimeConfig.version})\n`
 
 	// Add Enhancements
-	;({filtered, remainder} = filterRemainder(remainder, findLabel, ['enhancement'])) // Outer brackets  and preceding semicolon necessary for destructuring.
+	;({filtered, remainder} = filterRemainder(remainder, findLabels, [['enhancement']])) // Outer brackets  and preceding semicolon necessary for destructuring.
 	if (filtered.length) {
 		content += `\n### Enhancements\n`
 		filtered.forEach(pull => 
@@ -28,7 +28,7 @@ const createMdContent = function (runtimeConfig, pulls) {
 	}
 
 	// Add Bugs
-	;({filtered, remainder} = filterRemainder(remainder, findLabel, ['bug'])) // Outer brackets and preceding semicolon necessary for destructuring.
+	;({filtered, remainder} = filterRemainder(remainder, findLabels, [['bug']])) // Outer brackets and preceding semicolon necessary for destructuring.
 	if (filtered.length) {
 		content += `\n### Fixed\n`
 		filtered.forEach(pull => 

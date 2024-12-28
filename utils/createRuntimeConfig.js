@@ -38,6 +38,10 @@ function createRuntimeConfig() {
 		runtimeConfig.releaseDate = now.toLocaleDateString('sv')
 	}
 
+	// Read exclude labels
+	runtimeConfig.excludeLabels = processArgs.excludeLabels ? processArgs.excludeLabels.split(",") :
+		(configFile.excludeLabels ? configFile.excludeLabels : ['dependencies'])
+
 	// Read outFile
 	runtimeConfig.outFile = processArgs.out ? processArgs.out :
 		(configFile.out ? configFile.out : 'nc_changelog.md')
